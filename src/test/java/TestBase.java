@@ -16,6 +16,8 @@ public class TestBase {
 
     RegistrationPage registrationPage = new RegistrationPage();
 
+
+
     @BeforeEach
     void addListener() {
         SelenideLogger.addListener("AllureSelenide", new AllureSelenide());
@@ -23,19 +25,20 @@ public class TestBase {
 
     @BeforeAll
     static void beforeAll() {
-        Configuration.baseUrl = "https://demoqa.com";
-        Configuration.browserSize = "1920x1080";
-//        Configuration.browser = "chrome";
-//        Configuration.browserVersion = "128.0";
-//        Configuration.browserVersion = "130.0";
+        String browser = System.getProperty("browser");
+        String browserVersion = System.getProperty("browserVersion");
+        String baseUrl = System.getProperty("baseUrl");
+        String remoteUrl = System.getProperty("remoteUrl");
+        String browserSize = System.getProperty("browserSize");
 
         DesiredCapabilities capabilities = new DesiredCapabilities();
         capabilities.setCapability("selenoid:options", Map.<String, Object>of(
                 "enableVNC", true,
                 "enableVideo", true
         ));
+
         Configuration.browserCapabilities = capabilities;
-        Configuration.remote = "https://user1:1234@selenoid.autotests.cloud/wd/hub";
+
     }
 
     @AfterEach
