@@ -25,11 +25,11 @@ public class TestBase {
 
     @BeforeAll
     static void beforeAll() {
-        String browser = System.getProperty("browser");
-        String browserVersion = System.getProperty("browserVersion");
-        String baseUrl = System.getProperty("baseUrl");
-        String remoteUrl = System.getProperty("remoteUrl");
-        String browserSize = System.getProperty("browserSize");
+        Configuration.browser = System.getProperty("browser");
+        Configuration.browserVersion = System.getProperty("browserVersion");
+        Configuration.baseUrl = System.getProperty("baseUrl");
+        Configuration.remote = System.getProperty("remoteUrl");
+        Configuration.browserSize = System.getProperty("browserSize");
 
         DesiredCapabilities capabilities = new DesiredCapabilities();
         capabilities.setCapability("selenoid:options", Map.<String, Object>of(
