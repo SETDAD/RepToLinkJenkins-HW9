@@ -7,6 +7,9 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import pages.RegistrationPage;
+import config.ConfigReader;
+import config.ProjectConfiguration;
+import config.WebConfig;
 
 import java.util.Map;
 
@@ -16,7 +19,7 @@ public class TestBase {
 
     RegistrationPage registrationPage = new RegistrationPage();
 
-
+    private static final WebConfig webConfig = ConfigReader.Instance.read();
 
     @BeforeEach
     void addListener() {
@@ -25,19 +28,8 @@ public class TestBase {
 
     @BeforeAll
     static void beforeAll() {
-        Configuration.browser = System.getProperty("browser");
-        Configuration.browserVersion = System.getProperty("browserVersion");
-        Configuration.baseUrl = System.getProperty("baseUrl");
-        Configuration.remote = System.getProperty("remoteUrl");
-        Configuration.browserSize = System.getProperty("browserSize");
-
-        DesiredCapabilities capabilities = new DesiredCapabilities();
-        capabilities.setCapability("selenoid:options", Map.<String, Object>of(
-                "enableVNC", true,
-                "enableVideo", true
-        ));
-
-        Configuration.browserCapabilities = capabilities;
+        ProjectConfiguration projectConfiguration = new ProjectConfiguration(webConfig);
+        projectConfiguration.webConfig();
 
     }
 
