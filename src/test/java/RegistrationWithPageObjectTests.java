@@ -21,8 +21,8 @@ public class RegistrationWithPageObjectTests extends TestBase {
     void successfulRegistrationTest() {
         step("Open registration page", () ->
                 registrationPage.openPage());
-        executeJavaScript("$('#fixedban').remove()");
-        executeJavaScript("$('footer').remove()");
+        executeJavaScript("document.querySelector('#fixedban')?.remove();");
+        executeJavaScript("document.querySelector('footer')?.remove();");
         step("Fill registration form", () -> {
             registrationPage
                     .setFirstName("Alex")
@@ -56,6 +56,8 @@ public class RegistrationWithPageObjectTests extends TestBase {
     void brokenRegistrationTest() {
         step("Open registration page", () ->
                 registrationPage.openPage());
+        executeJavaScript("document.querySelector('#fixedban')?.remove();");
+        executeJavaScript("document.querySelector('footer')?.remove();");
 
         step("Fill registration form", () -> {
             registrationPage
