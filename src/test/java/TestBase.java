@@ -11,6 +11,7 @@ import pages.RegistrationPage;
 import java.util.Map;
 
 import static com.codeborne.selenide.Selenide.closeWebDriver;
+import static com.codeborne.selenide.Selenide.executeJavaScript;
 
 public class TestBase {
 
@@ -30,6 +31,8 @@ public class TestBase {
         Configuration.baseUrl = System.getProperty("baseUrl");
         Configuration.remote = System.getProperty("remoteUrl");
         Configuration.browserSize = System.getProperty("browserSize");
+        executeJavaScript("$('#fixedban').remove()");
+        executeJavaScript("$('footer').remove()");
 
         DesiredCapabilities capabilities = new DesiredCapabilities();
         capabilities.setCapability("selenoid:options", Map.<String, Object>of(
