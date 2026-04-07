@@ -10,6 +10,7 @@ import static com.codeborne.selenide.Condition.appear;
 import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.$;
+import static com.codeborne.selenide.Selenide.executeJavaScript;
 import static io.qameta.allure.Allure.step;
 
 @Story("Registration form")
@@ -20,6 +21,8 @@ public class RegistrationWithPageObjectTests extends TestBase {
     void successfulRegistrationTest() {
         step("Open registration page", () ->
                 registrationPage.openPage());
+        executeJavaScript("$('#fixedban').remove()");
+        executeJavaScript("$('footer').remove()");
         step("Fill registration form", () -> {
             registrationPage
                     .setFirstName("Alex")
