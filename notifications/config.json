@@ -1,0 +1,17 @@
+{
+  "base": {
+    "project": "Allure notification to Telegram",
+    "environment": "test",
+    "comment": "comment here @SETDAD",
+    "reportLink": "https://jenkins.autotests.cloud/view/java_students/job/C39-Dmitry_Smetanin-ConfigsHW12/11/",
+    "language": "en",
+    "allureFolder": "C:\\Users\\mrdem\\AppData\\Local\\Temp\\2778568753630690222\\allure-report",
+    "enableChart": false
+  },
+  "telegram": {
+    "token": "8700123641:AAHd_XiLfILqPpFCBUTRWvq9_RxKna6HEqA",
+    "chat": "-5218509313",
+    "replyTo": "",
+    "templatePath": "/templates/telegram.ftl"
+  }
+}
